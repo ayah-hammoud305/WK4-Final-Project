@@ -53,14 +53,7 @@
                 <h2 class="features__title">
                     Featured Movies
                 </h2>
-                <div class="filter__container">
-                <select id="filter" onchange="filterMovies(event)">
-                    <option value="" disabled selected>Sort By Year</option>
-                    <option value="2000s">2000s</option>
-                    <option value="2000s">2010s</option>
-                    <option value="2000s">2020s</option>
-                </select>
-            </div>
+                <input type="number" placeholder="2024" onchange="onSearchChange(event)">
                 <div class="movies__wrapper">
                 <div class="movies">
                     <div class="movie">

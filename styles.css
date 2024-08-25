@@ -186,7 +186,7 @@ FEATURES
 #features {
     background-image: linear-gradient(to right, rgb(8, 8, 15), rgb(36, 8, 8));
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: -1;
 }
 
@@ -200,19 +200,18 @@ FEATURES
     padding: 48px 24px;
     
 }
-
-select {
+input {
     padding: 12px 24px;
     border: none;
     font-weight: bold;
-    margin: 0;
-    position: absolute;
+    margin-bottom: 32px;
+    /* position: absolute; */
 }
 
 .filter__container {
     display: flex;
     justify-content: flex-end;
-    padding-right: 150px;
+    padding-right: 100px;
 }
 
 option {
