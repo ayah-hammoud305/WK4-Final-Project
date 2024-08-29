@@ -6,7 +6,7 @@
     <title>Movies</title>
     <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/270ea533fc.js" crossorigin="anonymous"></script>
-  <script src="index.js"></script>
+  
 
 </head>
 <body>
@@ -28,6 +28,9 @@
                         <button class="nav__button">Contact</button>
                     </li>
                 </ul>
+                <button class="button__menu">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </nav>
     </section>
@@ -39,7 +42,7 @@
                     Browse Our Movies
                 </h1>
                 <div class="search__bar--container">
-                    <input type="text" class="search__bar" placeholder="Search..">
+                    <input type="text" class="search__bar" placeholder="Search..." oninput="loadMovies(event.target.value)">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 
@@ -53,7 +56,7 @@
                 <h2 class="features__title">
                     Featured Movies
                 </h2>
-                <input type="number" placeholder="2024" onchange="onSearchChange(event)">
+                <input type="number" placeholder="2024" oninput="filterMovies(event.target.value)">
                 <div class="movies__wrapper">
                 <div class="movies">
                     <div class="movie">
@@ -136,5 +139,6 @@
         </div>
     </div>
     </section>
+    <script src="./movie.js"></script>
 </body>
 </html>
