@@ -1,9 +1,11 @@
 const moviesContainer = document.querySelector(".movies");
 const searchBar = document.querySelector(".search__bar");
 const yearInput = document.querySelector('input[type="number"]');
+const moviesLoading = document.querySelector(".movies__loading")
 
 let movieResRaw = null;
 let movieResFilter = null;
+
 
 
 async function filterMovies(year) {
