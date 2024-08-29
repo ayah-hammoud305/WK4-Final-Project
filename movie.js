@@ -1,15 +1,12 @@
 const moviesContainer = document.querySelector(".movies");
 const searchBar = document.querySelector(".search__bar");
 const yearInput = document.querySelector('input[type="number"]');
-const moviesLoading = document.querySelector(".movies__loading")
+const moviesLoading = document.querySelector(".movies__loading");
 
 let movieResRaw = null;
 let movieResFilter = null;
 
-
-
 async function filterMovies(year) {
-
   if (year) {
     movieResFilter = await movieResRaw.filter((movie) => movie.Year === year);
 
@@ -24,8 +21,11 @@ async function filterMovies(year) {
 }
 
 async function loadMovies(searchTerm) {
-
   try {
+    moviesContainer.innerHTML = `<div class="movies__loading">
+                    <i class="fas fa-spinner movies__loading--spinner"></i>
+                </div>`;
+
     const response = await fetch(
       `https://www.omdbapi.com/?apikey=ed88fe15&s=${searchTerm}`
     );
@@ -44,7 +44,6 @@ async function loadMovies(searchTerm) {
     console.log("Error fetching movies: ", error);
   }
 }
-
 
 function movieHTML(movie) {
   return `<div class="movie">

@@ -193,6 +193,8 @@ FEATURES
 
 */
 
+
+
 #features {
     background-image: linear-gradient(to right, rgb(8, 8, 15), rgb(36, 8, 8));
     width: 100%;
@@ -307,13 +309,15 @@ SPINNER
     align-items: center;
     justify-content: center;
     padding-top: 60px;
+    padding-bottom: 100vh;
     font-size: 60px;
     color: #ffffff;
   }
+
   
-  .movies__loading--spinner {
+  /* .movies__loading--spinner {
     display: none !important;
-  }
+  } */
   
   /* .movies__loading .movies__loading--spinner {
     display: block !important;
