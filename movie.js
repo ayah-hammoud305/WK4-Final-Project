@@ -1,15 +1,17 @@
 const moviesContainer = document.querySelector(".movies");
-const searchBar = document.querySelector(".search__bar");
-const yearInput = document.querySelector('input[type="number"]');
+const searchBar = document.querySelector(".search__bar--container"); 
+// ^^Changed to target the form instead of the input, still works..somewhat.
+const typeInput = document.querySelector(".select__type");
+// ^^ Changed to target the select instead of the input.
 const moviesLoading = document.querySelector(".movies__loading");
 
 let movieResRaw = null;
 let movieResFilter = null;
 
-async function filterMovies(year) {
-  if (year) {
-    movieResFilter = await movieResRaw.filter((movie) => movie.Year === year);
-
+async function filterMovies(Type) {
+  if (Type) {
+    movieResFilter = await movieResRaw.filter((movie) => movie.Type === Type);
+// ^^Changed everything that said "Year" to "Type". It works once the search bar is used, however line 22 won't run for some reason.
     moviesContainer.innerHTML = movieResFilter
       .map((movie) => movieHTML(movie))
       .join("");
@@ -18,8 +20,14 @@ async function filterMovies(year) {
       .map((movie) => movieHTML(movie))
       .join("");
   }
+  //  else if {
+  //   moviesContainer.innerHTML = `<p class="no__movies">No movies found.</p>`;
+  // }
+  // No IDEA WHY THE ABOVE ISNT WORKING.
+  
 }
 
+// Search bar is working 50% of the time, however, when it does work, it is showing results for "Undefined" instead of the search term.
 async function loadMovies(searchTerm) {
   try {
     moviesContainer.innerHTML = `<div class="movies__loading">
@@ -54,8 +62,8 @@ function movieHTML(movie) {
               <div class="movie__title">
                 ${movie.Title}
               </div>
-              <div class="movie__year">
-                ${movie.Year}
+              <div class="movie__Type">
+                ${movie.Type}
               </div>
             </div>
           </div>`;
