@@ -11,7 +11,7 @@ let movieResFilter = null;
 async function filterMovies(Type) {
   if (Type) {
     movieResFilter = await movieResRaw.filter((movie) => movie.Type === Type);
-// ^^Changed everything that said "Year" to "Type". It works once the search bar is used, however line 22 won't run for some reason.
+// ^^Changed everything that said "Year" to "Type". It works once the search bar is used, however line 23 won't run for some reason.
     moviesContainer.innerHTML = movieResFilter
       .map((movie) => movieHTML(movie))
       .join("");
