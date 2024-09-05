@@ -39,9 +39,9 @@
                 <h1 class="header__title">
                     Browse Our Movies
                 </h1>
-                <form class="search__bar--container">
-                    <input type="text" class="search__bar" placeholder="Search...">
-                    <button class="search__button" type="button" onclick="loadMovies(event.target.value)">
+                <form class="search__bar--container" onsubmit="loadMovies(event)">
+                    <input type="text" id="searchInput" class="search__bar" placeholder="Search...">
+                    <button class="search__button" type="submit">
                       <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </form>
@@ -58,9 +58,10 @@
                 </h2>
                 <select class="select__type" oninput="filterMovies(event.target.value)">
                     <option value="" disabled selected>Sort by Film Type</option>
-                    <option value="MOVIES">Movies</option>
-                    <option value="SERIES">Series</option>
-                    <option value="EPISODE">Episode</option>
+                    <option value="all results">All Results</option>
+                    <option value="movie">Movies</option>
+                    <option value="series">Series</option>
+                    <option value="episode">Episode</option>
                 </select>
           
                 <div class="movies__wrapper">

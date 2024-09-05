@@ -1,35 +1,35 @@
 const moviesContainer = document.querySelector(".movies");
-const searchBar = document.querySelector(".search__bar--container"); 
-// ^^Changed to target the form instead of the input, still works..somewhat.
+const searchBar = document.querySelector(".search__bar--container");
 const typeInput = document.querySelector(".select__type");
-// ^^ Changed to target the select instead of the input.
 const moviesLoading = document.querySelector(".movies__loading");
 
 let movieResRaw = null;
 let movieResFilter = null;
 
 async function filterMovies(Type) {
-  if (Type) {
+  if (Type !== "all results") {
     movieResFilter = await movieResRaw.filter((movie) => movie.Type === Type);
-// ^^Changed everything that said "Year" to "Type". It works once the search bar is used, however line 23 won't run for some reason.
-    moviesContainer.innerHTML = movieResFilter
-      .map((movie) => movieHTML(movie))
-      .join("");
+    console.log(movieResFilter);
+
+    if (movieResFilter.length === 0) {
+      moviesContainer.innerHTML = `<p class="no__movies">No movies found.</p>`;
+    } else {
+      moviesContainer.innerHTML = movieResFilter
+        .map((movie) => movieHTML(movie))
+        .join("");
+    }
   } else {
+    movieResFilter = null;
     moviesContainer.innerHTML = movieResRaw
       .map((movie) => movieHTML(movie))
       .join("");
   }
-  //  else if {
-  //   moviesContainer.innerHTML = `<p class="no__movies">No movies found.</p>`;
-  // }
-  // No IDEA WHY THE ABOVE ISNT WORKING.
-  
 }
 
-// Search bar is working 50% of the time, however, when it does work, it is showing results for "Undefined" instead of the search term.
-async function loadMovies(searchTerm) {
+async function loadMovies(event) {
+  event.preventDefault();
   try {
+    const searchTerm = document.getElementById("searchInput").value;
     moviesContainer.innerHTML = `<div class="movies__loading">
                     <i class="fas fa-spinner movies__loading--spinner"></i>
                 </div>`;
@@ -46,6 +46,7 @@ async function loadMovies(searchTerm) {
         movieHTML(movie)
       ).join("");
     } else {
+      movieResRaw = null;
       moviesContainer.innerHTML = `<p class="no__movies">No movies found.</p>`;
     }
   } catch (error) {
